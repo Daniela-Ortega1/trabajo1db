@@ -1,0 +1,11 @@
+clientes.xlsx
+
+pqrs.xlsx
+
+/venv
+
+.env
+
+__pycache__
+
+data.sql
