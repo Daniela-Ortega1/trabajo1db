@@ -7,7 +7,6 @@ def insert_merged_data_in_bulk(df, table_name='ClientesPQRS'):
     cursor = None
 
     try:
-        # Establecer la conexión a la base de datos
         connection = mysql.connector.connect(
             host=os.getenv("DB_HOST"),
             user=os.getenv("DB_USER"),
@@ -19,16 +18,13 @@ def insert_merged_data_in_bulk(df, table_name='ClientesPQRS'):
             st.success("Connected to the database successfully.")
             cursor = connection.cursor()
 
-            # Crear la consulta de inserción
             insert_query = f"""
             INSERT INTO {table_name} (IdCliente, NombreCompleto, Sexo, Edad, Ciudad, Idpqrs, Tipo, FechaCaso, Asunto, Estado, FechaCierre, Urgencia)
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
             """
 
-            # Convertir los datos del DataFrame en una lista de tuplas
             merged_data = df[['IdCliente', 'NombreCompleto', 'Sexo', 'Edad', 'Ciudad', 'Idpqrs', 'Tipo', 'FechaCaso', 'Asunto', 'Estado', 'FechaCierre', 'Urgencia']].to_records(index=False).tolist()
 
-            # Ejecutar la inserción en la base de datos
             cursor.executemany(insert_query, merged_data)
             connection.commit()
 

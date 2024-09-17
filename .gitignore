@@ -7,3 +7,5 @@ pqrs.xlsx
 .env
 
 __pycache__
+
+data.sql
