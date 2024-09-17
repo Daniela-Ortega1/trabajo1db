@@ -13,8 +13,8 @@ def extract_data_from_excel(excel_file):
 
 st.title("Upload and Merge Excel Files")
 
-uploaded_file1 = st.file_uploader("Attendance list Excel file 1", type=["xls", "xlsx"], key="file1")
-uploaded_file2 = st.file_uploader("Attendance list Excel file 2", type=["xls", "xlsx"], key="file2")
+uploaded_file1 = st.file_uploader("Excel file 1", type=["xls", "xlsx"], key="file1")
+uploaded_file2 = st.file_uploader("Excel file 2", type=["xls", "xlsx"], key="file2")
 
 if uploaded_file1 is not None and uploaded_file2 is not None:
     st.write("Files were uploaded successfully.")
